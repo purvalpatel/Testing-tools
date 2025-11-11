@@ -73,8 +73,15 @@ http {
   }
 }
 ```
+**This means:** <br>
 
+Normal: 20 requests/sec per IP <br>
+Bursts up to 40, then block / delay <br>
  
+If you're behind **Cloudflare**, enable: <br>
+Rate Limiting Rules <br>
+Bot Fight Mode <br>
+WAF rules <br>
 
 Locust: 
 -------
