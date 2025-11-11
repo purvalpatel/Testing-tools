@@ -110,6 +110,25 @@ source locust-env/bin/activate
 pip install locust
 ```
 
+### Create script:
+locustfile.py
+```
+from locust import HttpUser, task, between
+
+class MyWebsiteUser(HttpUser):
+    wait_time = between(1, 3)  # simulated user think time
+
+    @task
+    def homepage(self):
+        self.client.get("/")
+```
+
+locust -f locustfile.py <br>
+
+Now, open web ui in browser. <br>
+http://localhost:8089 <br>
+
+<img width="1920" height="1088" alt="image" src="https://github.com/user-attachments/assets/1725bd22-1caa-4de7-9eef-0f70c397e9ff" />
 
  
 
