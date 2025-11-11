@@ -93,8 +93,23 @@ WAF rules <br>
 
 Locust: 
 -------
+Python based **load testing tool** where you design user behaviour using **python code**.<br>
+it simulates **real user workflows**, **not just raw http traffic**, like **k6**. <br>
 
- 
+### Install locust library for python:
+```
+sudo apt install python3.12-venv -y
+
+# Create a virtual environment
+python3 -m venv locust-env
+
+# Activate it
+source locust-env/bin/activate
+
+# Now install Locust safely
+pip install locust
+```
+
 
  
 
