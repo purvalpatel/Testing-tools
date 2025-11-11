@@ -57,8 +57,22 @@ export default function () {
 ```
 k6 run test.js 
 ```
- 
 
+ How to prevent server from DDOS?
+ ------------------------------
+1. Rate limiting if behind proxy:
+
+```
+http {
+  limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate=20r/s;
+
+  server {
+    location / {
+      limit_req zone=req_limit_per_ip burst=40 nodelay;
+    }
+  }
+}
+```
 
  
 
