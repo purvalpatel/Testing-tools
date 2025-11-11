@@ -27,7 +27,7 @@ https://github.com/grafana/k6
 ```
 
 1. Create test.js script. 
-```json
+```js
 import http from "k6/http";
 import { check, sleep } from "k6";
 
