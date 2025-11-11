@@ -1,0 +1,72 @@
+K6:
+---
+
+Modern load-testing tool for performance and testing industries.  <br>
+**Features:**
+1. Configurable load generation 
+2. Tests as a code 
+3. A Full-featured API 
+4. an embedded Javascript engine 
+5. Multiple protocol support 
+6. Large extention ecosystem 
+7. Flexible metrics storage and visualization 
+8. Native integration with grafana cloud 
+
+### Installation of K6: 
+```BASH
+curl -s https://dl.k6.io/key.gpg | sudo apt-key add - 
+
+echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list 
+
+sudo apt update && sudo apt install k6 
+```
+ 
+### Example script: 
+```
+https://github.com/grafana/k6 
+```
+
+1. Create test.js script. 
+```json
+import http from "k6/http";
+import { check, sleep } from "k6";
+
+// Test configuration
+export const options = {
+  thresholds: {
+    // Assert that 99% of requests finish within 3000ms.
+    http_req_duration: ["p(99) < 3000"],
+  },
+  // Ramp the number of virtual users up and down
+  stages: [
+    { duration: "30s", target: 15 },
+    { duration: "1m", target: 15 },
+    { duration: "20s", target: 0 },
+  ],
+};
+
+// Simulated user behavior
+export default function () {
+  let res = http.get("https://domain.com");
+  // Validate response status
+  check(res, { "status was 200": (r) => r.status == 200 });
+  sleep(1);
+}
+```
+2. Run it with: 
+```
+k6 run test.js 
+```
+ 
+
+
+ 
+
+Locust: 
+-------
+
+ 
+
+ 
+
+ 
