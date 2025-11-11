@@ -110,7 +110,7 @@ source locust-env/bin/activate
 pip install locust
 ```
 
-### Create script:
+### Create script: Simple test
 locustfile.py
 ```
 from locust import HttpUser, task, between
@@ -132,4 +132,33 @@ http://localhost:8089 <br>
 
  
 
- 
+### Login test : 
+```
+from locust import HttpUser, task, between
+
+class WebsiteUser(HttpUser):
+    wait_time = between(1, 3)   # wait between requests (seconds)
+
+    def on_start(self):
+        """This runs when a simulated user starts."""
+        self.login()
+
+    def login(self):
+        payload = {
+            "username": "your_username",
+            "password": "your_password"
+        }
+        with self.client.post("/login", json=payload, catch_response=True) as response:
+            if response.status_code == 200:
+                response.success()
+                print("✅ Login successful")
+            else:
+                response.failure(f"❌ Login failed: {response.text}")
+
+    @task
+    def dashboard(self):
+        """This is the protected page after login."""
+        self.client.get("/dashboard")   # example endpoint
+
+```
+locust -f locustfile.py
