@@ -58,8 +58,8 @@ Explaination: <br>
 - `target` means how many virtual users will be active.
 
 So this script designed for **stress test** and **overload** the server. <br>
-`http_req_duration` 95% requests should finish within 2 seconds.
-`http_req_failed` no more than 5% requests failure allowed.
+`http_req_duration` 95% requests should finish within 2 seconds.<br>
+`http_req_failed` no more than 5% requests failure allowed. <br>
 
 2. Run it with: 
 ```
