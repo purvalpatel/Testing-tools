@@ -96,6 +96,8 @@ Locust:
 Python based **load testing tool** where you design user behaviour using **python code**.<br>
 it simulates **real user workflows**, **not just raw http traffic**, like **k6**. <br>
 
+**open-source load testing tool** that lets you simulate **concurrent users** (called locusts) **sending requests** to your system — **web APIs, websites, or services** — to measure performance and find bottlenecks.
+
 ### Install locust library for python:
 ```
 sudo apt install python3.12-venv -y
@@ -110,7 +112,7 @@ source locust-env/bin/activate
 pip install locust
 ```
 
-### Create script: Simple test
+### Method 1: Simple test
 locustfile.py
 ```
 from locust import HttpUser, task, between
@@ -123,16 +125,22 @@ class MyWebsiteUser(HttpUser):
         self.client.get("/")
 ```
 
+Execute:
+```
 locust -f locustfile.py <br>
+```
 
 Now, open web ui in browser. <br>
 http://localhost:8089 <br>
 
+#### Configure load test in web UI:
+**Number of users** – total concurrent simulated users <br>
+**Spawn rate** – how many users start per second <br>
+**Host** – base URL of your target (e.g. https://example.com) <br>
+
 <img width="1920" height="1088" alt="image" src="https://github.com/user-attachments/assets/1725bd22-1caa-4de7-9eef-0f70c397e9ff" />
 
- 
-
-### Login test : 
+### Method 2: Login test
 ```
 from locust import HttpUser, task, between
 
@@ -161,4 +169,18 @@ class WebsiteUser(HttpUser):
         self.client.get("/dashboard")   # example endpoint
 
 ```
+Execute:
+```
 locust -f locustfile.py
+```
+
+### Method 3: Headless (CLI) Mode (Without UI )
+useful for automation.
+```
+locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com
+```
+
+-u 100: simulate 100 users <br>
+-r 10: spawn 10 users/sec <br>
+-t 2m: test runs for 2 minutes <br>
+--host: base target URL <br>
