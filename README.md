@@ -184,3 +184,11 @@ locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com
 -r 10: spawn 10 users/sec <br>
 -t 2m: test runs for 2 minutes <br>
 --host: base target URL <br>
+
+### Generate reports:
+```
+locust -f locustfile.py --headless -u 100 -r 10 -t 2m \
+  --host https://example.com \
+  --html report.html --csv results
+
+```
