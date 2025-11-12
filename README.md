@@ -141,7 +141,7 @@ http://localhost:8089 <br>
 <img width="1920" height="1088" alt="image" src="https://github.com/user-attachments/assets/1725bd22-1caa-4de7-9eef-0f70c397e9ff" />
 
 ### Method 2: Login test
-```
+```js
 from locust import HttpUser, task, between
 
 class WebsiteUser(HttpUser):
@@ -170,13 +170,13 @@ class WebsiteUser(HttpUser):
 
 ```
 Execute:
-```
+```BASH
 locust -f locustfile.py
 ```
 
 ### Method 3: Headless (CLI) Mode (Without UI )
 useful for automation.
-```
+```BASH
 locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com
 ```
 
@@ -186,7 +186,7 @@ locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com
 --host: base target URL <br>
 
 ### Generate reports:
-```
+```BASH
 locust -f locustfile.py --headless -u 100 -r 10 -t 2m \
   --host https://example.com \
   --html report.html --csv results
