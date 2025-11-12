@@ -127,7 +127,7 @@ class MyWebsiteUser(HttpUser):
 
 Execute:
 ```
-locust -f locustfile.py <br>
+locust -f locustfile.py
 ```
 
 Now, open web ui in browser. <br>
