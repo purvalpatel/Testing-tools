@@ -27,7 +27,7 @@ https://github.com/grafana/k6
 ```
 
 1. Create test.js script. 
-```js
+```py
 import http from "k6/http";
 import { check, sleep } from "k6";
 
@@ -99,7 +99,7 @@ it simulates **real user workflows**, **not just raw http traffic**, like **k6**
 **open-source load testing tool** that lets you simulate **concurrent users** (called locusts) **sending requests** to your system — **web APIs, websites, or services** — to measure performance and find bottlenecks.
 
 ### Install locust library for python:
-```
+```BASH
 sudo apt install python3.12-venv -y
 
 # Create a virtual environment
@@ -114,7 +114,7 @@ pip install locust
 
 ### Method 1: Simple test
 locustfile.py
-```
+```py
 from locust import HttpUser, task, between
 
 class MyWebsiteUser(HttpUser):
@@ -141,7 +141,7 @@ http://localhost:8089 <br>
 <img width="1920" height="1088" alt="image" src="https://github.com/user-attachments/assets/1725bd22-1caa-4de7-9eef-0f70c397e9ff" />
 
 ### Method 2: Login test
-```js
+```py
 from locust import HttpUser, task, between
 
 class WebsiteUser(HttpUser):
